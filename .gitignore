@@ -1,0 +1,7 @@
+.env
+*.json
+!package.json
+node_modules/
+__pycache__/
+.linkedin-mcp/
+.DS_Store
