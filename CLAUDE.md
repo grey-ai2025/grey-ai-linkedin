@@ -23,14 +23,26 @@ SPARK Suite — a practical AI literacy training program.
 Save research findings to `research/` as .md files.
 The competitor list is at `competitors/watchlist.md`.
 
+## File Naming Convention
+
+Always include today's date at the **front** of the filename:
+
+- Drafts: `drafts/YYYY-MM-DD-[descriptive-slug].md`
+- Research: `research/YYYY-MM-DD-[descriptive-slug].md`
+
+Examples:
+- `drafts/2026-02-20-just-use-ai-is-not-a-strategy-relatable-rant.md`
+- `research/2026-02-20-ethan-mollick-linkedin-live.md`
+
 ## Research Tools
 
 **Primary: `linkedin-scraper` MCP**
 - `get_company_posts` — pull recent posts from a company page
 - `get_company_profile` — get company info
-- `get_person_profile` — get individual profiles
+- `get_person_profile` — get individual profiles (bio, experience, etc.)
+- `get_person_posts` — pull recent posts from an individual's activity feed (thought leaders, competitors)
 - `search_people` — find people by keywords
-- Research ONE company at a time to avoid session expiration
+- Research ONE person/company at a time to avoid session expiration
 
 **Fallback: Web Search**
 - If the scraper returns "authentication_failed" or "session expired", do NOT stop — use web search instead
@@ -39,7 +51,7 @@ The competitor list is at `competitors/watchlist.md`.
 - You can still deliver solid competitor research with web search alone
 
 **If scraper session expires mid-task:**
-- Tell the user: "LinkedIn session expired. I'm continuing with web search. Run `uvx linkedin-scraper-mcp --get-session` in your terminal when you get a chance to refresh it."
+- Tell the user: "LinkedIn session expired. I'm continuing with web search. Run `uv run --project linkedin-mcp-local linkedin-mcp-server --login` in your terminal when you get a chance to refresh it."
 - Then keep working — never let a dead session block the entire workflow.
 
 ---
