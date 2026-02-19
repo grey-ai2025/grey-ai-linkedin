@@ -11,6 +11,7 @@ Use these with the `get_company_posts` and `get_company_profile` scraper tools.
 | Correlation One | https://www.linkedin.com/company/correlation-one | Enterprise AI skills, Fortune 500 positioning, DoD contracts |
 | Data Society | https://www.linkedin.com/company/data-society | Corporate AI/data training, Forbes contributor CEO, practical skills angle |
 | LearnQuest | https://www.linkedin.com/company/learnquest | AI training ROI content, stats-heavy posts |
+| Ethan Mollick | https://www.linkedin.com/in/emollick | AI Guides
 
 ### Tier 2 — Larger Players in the Space
 
