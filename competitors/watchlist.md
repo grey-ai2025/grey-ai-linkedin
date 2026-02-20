@@ -11,7 +11,6 @@ Use these with the `get_company_posts` and `get_company_profile` scraper tools.
 | Correlation One | https://www.linkedin.com/company/correlation-one | Enterprise AI skills, Fortune 500 positioning, DoD contracts |
 | Data Society | https://www.linkedin.com/company/data-society | Corporate AI/data training, Forbes contributor CEO, practical skills angle |
 | LearnQuest | https://www.linkedin.com/company/learnquest | AI training ROI content, stats-heavy posts |
-| Ethan Mollick | https://www.linkedin.com/in/emollick | AI Guides
 
 ### Tier 2 — Larger Players in the Space
 
@@ -51,3 +50,16 @@ Carousels, text posts, polls, video? What's performing best?
 Find posts mentioning "AI literacy" or "AI training" with high engagement.
 What patterns do the top performers share?
 ```
+
+---
+
+### Newsletter Thought Leaders — News & Trend Sources
+
+Use these with web search to find trending AI topics and breaking news for timely posts.
+
+| Person / Newsletter | LinkedIn / URL | What to Watch |
+|---|---|---|
+| Zain Kahn (Superhuman AI) | https://www.linkedin.com/in/zainkahn/ | Practical AI tools, workflows, tutorials. 997K followers, 2M+ subscribers. Interviews CEOs (Salesforce, Perplexity, Box). Sponsored by Google, HubSpot, IBM, Amazon. Toronto-based. |
+| Rowan Cheung (The Rundown AI) | https://www.linkedin.com/in/rowancheung/ | Largest AI newsletter, 2M+ readers. Daily AI news digest, model releases, industry moves. 97K followers. Vancouver-based. Also runs "Rowan's Notes" podcast. |
+| Grant Janich (Vector) | https://www.linkedin.com/in/grantjanich/ | Defense tech / national security focus. 75K subscribers (founders & VCs). Austin-based. Covers Pentagon innovation, geopolitics, China. Inactive on LinkedIn (1yr+). Useful for defense-AI intersection angle only. |
+| Ethan Mollick | https://www.linkedin.com/in/emollick | AI Guides

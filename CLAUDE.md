@@ -54,6 +54,23 @@ Examples:
 - Tell the user: "LinkedIn session expired. I'm continuing with web search. Run `uv run --project linkedin-mcp-local linkedin-mcp-server --login` in your terminal when you get a chance to refresh it."
 - Then keep working — never let a dead session block the entire workflow.
 
+## Newsletter & News Sources
+
+Monitor these newsletters for trending AI topics, breaking news, and content inspiration.
+These inform the "Current AI News & Hot Takes" pillar and keep posts timely.
+
+| Newsletter | Author | Subscribers | Focus | How to Use |
+|---|---|---|---|---|
+| Superhuman AI | Zain Kahn | 2M+ | Practical AI tools, workflows, tutorials | Spot trending tools and "how-to" angles |
+| The Rundown AI | Rowan Cheung | 2M+ | Daily AI news digest, model releases, deals | Breaking news, industry moves, funding |
+| Vector | Grant Janich | 75K | Defense tech, national security, geopolitics | Defense-AI intersection, govt/enterprise angle |
+
+**How to research news topics:**
+- Web search for recent coverage from these newsletters
+- Search: `"[newsletter name]" + [topic] + 2026`
+- Cross-reference 2-3 sources before drafting a news-reactive post
+- Always add Grey AI's unique angle: "What does this mean for your team's AI literacy?"
+
 ---
 
 ## Voice: Smart Friend Who Knows AI
@@ -84,6 +101,7 @@ Examples:
 4. **Human-AI Collaboration** — AI amplifies expertise, doesn't replace judgment
 5. **AI Literacy for Leaders & Teams** — Building team-wide confidence, not just individual skill
 6. **AI Ethics & Trust** — Bias, hallucinations, and responsible use — because "move fast and break things" doesn't fly when AI makes decisions about people
+7. **Current AI News & Hot Takes** — Big announcements, summits, model drops, and funding moves — translated into "what this actually means for your team." Newsletter-worthy takes that make followers feel informed without reading 10 sources.
 
 
 ---
@@ -189,3 +207,28 @@ Scraped site content lives in `website/`. Use this for accurate product info in 
 ## Brand Reference
 - Colors: White, Black, Cyan (#ADFBF6), Dark Grey (#434343), Logo Grey (#9A9A9A), Light Grey (#f5f5f5)
 - Fonts: Avenir or DM Sans
+
+## Key Industry Figures (for accurate references in posts)
+
+**AI Investment (2026):**
+- Combined AI capex guidance: ~$650B across major tech companies
+- Amazon: $200B AI infrastructure commitment
+- Google: $175–185B
+- OpenAI/Cerebras: $10B+ computing deal (750 MW over 3 years)
+
+**Global AI Governance Timeline:**
+- Bletchley Park AI Safety Summit (2023, UK)
+- Seoul AI Summit (2024, South Korea)
+- Paris AI Action Summit (2025, France)
+- India AI Impact Summit (2026, India) — first in the Global South
+
+**Major Model Releases (Feb 2026):**
+- Claude Opus 4.6 & Sonnet 4.6 (Anthropic)
+- GPT-5.3-Codex (OpenAI)
+- Seedance 2.0 (ByteDance) — video generation
+
+**Key People (referenced in news posts):**
+- Sundar Pichai (Google/DeepMind)
+- Sam Altman (OpenAI)
+- Dario Amodei (Anthropic)
+- Demis Hassabis (Google DeepMind)
