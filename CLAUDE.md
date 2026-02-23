@@ -6,11 +6,31 @@ SPARK Suite — a practical AI literacy training program.
 
 ## Your Workflow
 
-1. **Research** → Use the `linkedin-scraper` MCP tools to pull competitor posts. If the scraper session has expired, fall back to web search to research competitors instead of stopping.
-2. **Analyze** → Look at what's getting engagement, what topics are trending, and identify content gaps Grey AI can fill.
-3. **Draft** → Write posts in Grey AI's voice (rules below)
-4. **Save** → Save each post draft to `drafts/` as a separate .md file
-5. **Format for copy/paste** → End every draft with a clean block:
+The core loop: **Scrape all profiles → Compile one research file → Draft posts.**
+
+When the user asks to scrape the watchlist (or similar), run this 3-phase pipeline automatically:
+
+### Phase 1 — SCRAPE (collect all data first)
+
+Iterate through EVERY profile in `competitors/watchlist.md`, one at a time:
+
+1. Use `get_person_posts` (individuals) or `get_company_posts` (companies)
+2. Collect findings in memory — do NOT save individual research files
+3. Move to the next profile automatically
+4. If the scraper fails, follow the **Scraper Failure Protocol** below
+
+### Phase 2 — ANALYZE (after all profiles are scraped)
+
+1. Compile ALL scraped data into ONE research file: `research/YYYY-MM-DD-watchlist-analysis.md`
+2. For each profile: summarize top content, themes, tone, engagement patterns
+3. Across all profiles: identify trending topics, recurring themes, content gaps Grey AI can fill
+
+### Phase 3 — DRAFT (create posts based on the combined analysis)
+
+1. Write posts inspired by the best content found, but in Grey AI's voice (see Voice rules below)
+2. Map each draft to a Content Pillar and Post Format
+3. Save each draft to `drafts/YYYY-MM-DD-[descriptive-slug].md`
+4. End every draft with a clean copy block:
 
 ```
 ---COPY BELOW---
@@ -20,8 +40,7 @@ SPARK Suite — a practical AI literacy training program.
 ---END---
 ```
 
-Save research findings to `research/` as .md files.
-The competitor list is at `competitors/watchlist.md`.
+The watchlist is at `competitors/watchlist.md`.
 
 ## File Naming Convention
 
@@ -36,23 +55,34 @@ Examples:
 
 ## Research Tools
 
-**Primary: `linkedin-scraper` MCP**
+**Primary (and preferred): `linkedin-scraper` MCP**
+- `get_person_posts` — pull recent posts from an individual's activity feed
+- `get_person_profile` — get individual profiles (bio, experience, etc.)
 - `get_company_posts` — pull recent posts from a company page
 - `get_company_profile` — get company info
-- `get_person_profile` — get individual profiles (bio, experience, etc.)
-- `get_person_posts` — pull recent posts from an individual's activity feed (thought leaders, competitors)
-- `search_people` — find people by keywords
 - Research ONE person/company at a time to avoid session expiration
 
-**Fallback: Web Search**
-- If the scraper returns "authentication_failed" or "session expired", do NOT stop — use web search instead
-- Search for: `site:linkedin.com "[company name]" posts 2025 2026`
-- Also check company blogs, press releases, and industry news
-- You can still deliver solid competitor research with web search alone
+**Scraper Failure Protocol (follow exactly):**
 
-**If scraper session expires mid-task:**
-- Tell the user: "LinkedIn session expired. I'm continuing with web search. Run `uv run --project linkedin-mcp-local linkedin-mcp-server --login` in your terminal when you get a chance to refresh it."
-- Then keep working — never let a dead session block the entire workflow.
+1. **First failure** (scraper returns "authentication_failed", "session expired", or similar error):
+   - STOP scraping immediately
+   - Tell the user: "LinkedIn scraper session expired. Please run this command to get a new session:"
+   - Provide: `uv run --project linkedin-mcp-local linkedin-mcp-server --login`
+   - WAIT for the user to confirm the session is refreshed before retrying
+   - Do NOT fall back to web search yet
+
+2. **Second failure** (scraper fails again after user refreshed):
+   - Tell the user: "Scraper failed again. Please run the login command one more time:"
+   - Provide the command again: `uv run --project linkedin-mcp-local linkedin-mcp-server --login`
+   - WAIT for user confirmation before retrying
+   - Do NOT fall back to web search yet
+
+3. **After two failures** — automatically fall back to web search:
+   - Tell the user: "Scraper failed twice. Switching to web search for the remaining profiles."
+   - Continue the scraping loop using web search instead
+   - Search for: `site:linkedin.com "[person/company name]" posts 2025 2026`
+   - Also check company blogs, press releases, and industry news
+   - Clearly note in the research file which profiles were scraped vs. web-searched
 
 ## Newsletter & News Sources
 
@@ -73,23 +103,38 @@ These inform the "Current AI News & Hot Takes" pillar and keep posts timely.
 
 ---
 
-## Voice: Smart Friend Who Knows AI
+## Voice: Analytical Authority Who Sees the Shifts First
 
-- Conversational, not corporate
-- Witty, not try-hard
-- Confident, not preachy
-- Empathetic to frustration, not dismissive
+- Observational, not preachy — we describe what's happening, not what people should do
+- Analytical, not academic — we break patterns down, we don't write papers
+- Confident authority, not thought-leader-lite — we state positions, not hedge them
+- Technically grounded but accessible — we reference specific tools, models, and products by name
+- Structural thinker — we use timelines, progressions, and frameworks to show how things evolve
+
+### Signature Moves:
+- **Timeline progressions** — trace how the "winning move" has shifted year over year
+- **Lowercase year headers with dashes** — "2024 - creative producers." (not bullet points, not caps)
+- **"Here's my [X] list" framing** — confident, opinionated, structured
+- **Explain the "why" behind each shift** — don't just list trends, decode them
+- **Reference specific tools/products** — Claude, ChatGPT, Midjourney, n8n, etc. (names ground the analysis)
+- **Provocative framing** — "winners list," "who actually benefits," "the real shift"
+- **Short paragraphs, punchy rhythm** — 1-2 sentences max per paragraph
+- **Arrow separators (↓ ↓ ↓)** for building anticipation before a list
 
 ### We sound like:
-- "Your data is lying to you. Here's how to catch it."
-- "AI won't replace you. But someone who knows how to use AI might."
-- "Stop asking 'will AI take my job?' Start asking 'how do I make AI do the boring parts?'"
+- "We're seeing the real-time shift in who wins with AI."
+- "2023 - English majors. They understood that the model is a language machine before it is anything else."
+- "The advantage moved from single processes to systems design."
+- "Here's my winners list."
+- "Multi-agent orchestration feels like gaming protocols right now."
 
 ### We NEVER sound like:
 - "Leverage synergistic AI-driven paradigms for transformational outcomes"
-- "🚀🔥💯 HUGE ANNOUNCEMENT! We're SO excited to share..."
+- "HUGE ANNOUNCEMENT! We're SO excited to share..."
 - "In today's rapidly evolving landscape of artificial intelligence..."
 - Generic LinkedIn motivational quotes
+- Vague "AI is changing everything" statements with no specifics
+- Hedged opinions: "It could be argued that..." / "Some might say..."
 
 ---
 
@@ -177,32 +222,6 @@ When saving drafts, include an image suggestion at the top of the .md file:
 Describe the FEELING, not the literal topic:
 - ❌ "A picture of AI training in a corporate setting"
 - ✅ "Dark gradient with a single bright cyan spotlight cutting through fog. Editorial, cinematic grain. Clarity emerging from confusion."
-
-## Own Website Reference — yoursparkpath.com
-
-Scraped site content lives in `website/`. Use this for accurate product info in posts.
-
-- `website/sitemap.md` — all pages and their URLs
-- `website/homepage.md` — hero copy, social proof logos, testimonials, methodology
-- `website/pricing.md` — 3 tiers: Micro ($99), Paths ($249), Suite ($1,999)
-- `website/products.md` — full catalog: 8 SPARK Paths + 24 micro-trainings with descriptions
-- `website/coaching.md` — Executive AI Coaching ($1,000), includes Calendly CTA
-- `website/schedule.md` — suggested curriculum phases (self-paced, no live dates)
-
-**When to reference:**
-- Conversion posts / CTAs → use `website/pricing.md` for accurate prices and product names
-- Case studies → reference specific training titles from `website/products.md`
-- Social proof → pull logos/testimonials from `website/homepage.md`
-- Coaching mentions → use `website/coaching.md` for accurate offer details
-
-**Key facts to keep accurate:**
-- 8 SPARK Paths, 24 micro-trainings, 8 competency areas
-- Suite = $1,999 (lifetime access, one-time)
-- Paths = $249 each (3 trainings per path)
-- Micro-trainings = $99 each (10-15 min)
-- Coaching = $1,000 per engagement
-- Free 20-min consultation available
-- Social proof: JP Morgan Chase, Microsoft, Vanguard, McKesson, Edward Jones, etc.
 
 ## Brand Reference
 - Colors: White, Black, Cyan (#ADFBF6), Dark Grey (#434343), Logo Grey (#9A9A9A), Light Grey (#f5f5f5)

@@ -1,65 +1,68 @@
-# Competitor Watchlist
+# Content Inspiration Watchlist
 
-## Direct AI Training Competitors
-
-Use these with the `get_company_posts` and `get_company_profile` scraper tools.
-
-### Tier 1 — Closest to Grey AI
-
-| Company | LinkedIn URL | What to Watch |
-|---|---|---|
-| Correlation One | https://www.linkedin.com/company/correlation-one | Enterprise AI skills, Fortune 500 positioning, DoD contracts |
-| Data Society | https://www.linkedin.com/company/data-society | Corporate AI/data training, Forbes contributor CEO, practical skills angle |
-| LearnQuest | https://www.linkedin.com/company/learnquest | AI training ROI content, stats-heavy posts |
-
-### Tier 2 — Larger Players in the Space
-
-| Company | LinkedIn URL | What to Watch |
-|---|---|---|
-| DataCamp | https://www.linkedin.com/company/datacamp | Strong content marketing, AI/data skills platform |
-| Pluralsight | https://www.linkedin.com/company/pluralsight | Enterprise tech training, AI paths, large following |
-| Noble Desktop | https://www.linkedin.com/company/noble-desktop | Hands-on ChatGPT/Copilot training, Forbes recognized |
-| Edstellar | https://www.linkedin.com/company/edstellar | Instructor-led AI marketplace, publishes competitor roundups |
-
-### Tier 3 — Adjacent / Thought Leadership
-
-| Company | LinkedIn URL | What to Watch |
-|---|---|---|
-| Anthropic | https://www.linkedin.com/company/anthropicresearch | How they position Claude for enterprise |
-| OpenAI | https://www.linkedin.com/company/openai | Sets the AI narrative everyone responds to |
+Scrape these profiles ONE AT A TIME to avoid session expiration.
 
 ---
 
-## Research Prompts to Use in Claude Code
+## Individual Thought Leaders
 
-```
-Pull the latest posts from [URL] and summarize themes, tone, and engagement.
-```
+Use `get_person_posts` for these profiles. Use `get_person_profile` if you need bio/background context.
 
-```
-Compare posts from Correlation One, Data Society, and Kendall AI this month.
-What topics are they covering? What's getting engagement? Where are the gaps?
-```
-
-```
-What content formats are the top AI training companies using on LinkedIn?
-Carousels, text posts, polls, video? What's performing best?
-```
-
-```
-Find posts mentioning "AI literacy" or "AI training" with high engagement.
-What patterns do the top performers share?
-```
+| Username | Name / Focus | What to Watch |
+|---|---|---|
+| noelleai | Noelle Russell — AI leadership, responsible AI | Enterprise AI adoption, ethical AI framing, executive-level tone |
+| danielsolove | Daniel Solove — Privacy law & AI | AI governance, privacy regulation, legal perspective on AI |
+| lexfridman | Lex Fridman — AI researcher & podcaster | Deep technical AI conversations, interview-driven insights, audience engagement |
+| alliekmiller | Allie K. Miller — AI strategy & investing | AI business strategy, startup ecosystem, enterprise adoption trends |
+| emollick | Ethan Mollick — AI + business/education | AI research translation, practical AI frameworks, management-AI intersection |
+| satyanadella | Satya Nadella — Microsoft CEO | Enterprise AI strategy, Copilot positioning, big-tech AI narrative |
+| luizajarovsky | Luiza Jarovsky — AI & data privacy | AI regulation, digital ethics, consumer-facing AI risks |
+| conorgrennan | Conor Grennan — AI in education/business | AI training for non-technical audiences, generative AI workshops |
+| azhar | Azeem Azhar — Exponential View | Macro AI trends, geopolitics of AI, economic impact framing |
+| boxaaron | Aaron Levie — Box CEO | Enterprise AI adoption, SaaS-AI intersection, witty tech takes |
 
 ---
 
-### Newsletter Thought Leaders — News & Trend Sources
+## Companies
 
-Use these with web search to find trending AI topics and breaking news for timely posts.
+Use `get_company_posts` for these profiles. Use `get_company_profile` if you need company background.
 
-| Person / Newsletter | LinkedIn / URL | What to Watch |
+| Company Slug | Company | What to Watch |
 |---|---|---|
-| Zain Kahn (Superhuman AI) | https://www.linkedin.com/in/zainkahn/ | Practical AI tools, workflows, tutorials. 997K followers, 2M+ subscribers. Interviews CEOs (Salesforce, Perplexity, Box). Sponsored by Google, HubSpot, IBM, Amazon. Toronto-based. |
-| Rowan Cheung (The Rundown AI) | https://www.linkedin.com/in/rowancheung/ | Largest AI newsletter, 2M+ readers. Daily AI news digest, model releases, industry moves. 97K followers. Vancouver-based. Also runs "Rowan's Notes" podcast. |
-| Grant Janich (Vector) | https://www.linkedin.com/in/grantjanich/ | Defense tech / national security focus. 75K subscribers (founders & VCs). Austin-based. Covers Pentagon innovation, geopolitics, China. Inactive on LinkedIn (1yr+). Useful for defense-AI intersection angle only. |
-| Ethan Mollick | https://www.linkedin.com/in/emollick | AI Guides
+| the-future-of-privacy-forum | Future of Privacy Forum | AI governance, privacy frameworks, regulatory trends |
+| a16z | Andreessen Horowitz (a16z) | AI investment theses, market narratives, startup ecosystem |
+
+---
+
+## How to Use This Watchlist
+
+### Auto-Scraping Pipeline
+
+When asked to scrape the watchlist, iterate through ALL profiles automatically:
+
+1. **Phase 1 — Scrape:** Loop through every profile above (one at a time). Use `get_person_posts` for individuals, `get_company_posts` for companies. Collect findings in memory.
+2. **Phase 2 — Analyze:** Compile all scraped data into ONE research file: `research/YYYY-MM-DD-watchlist-analysis.md`. Identify top content, trending topics, engagement patterns, and content gaps.
+3. **Phase 3 — Draft:** Write posts inspired by the best content found, but in Grey AI's voice. Save each to `drafts/`.
+
+If the scraper fails, follow the Scraper Failure Protocol in `CLAUDE.md`.
+
+### Analysis Prompts
+
+When analyzing scraped profiles, answer these questions:
+
+1. What topics are they posting about this week/month?
+2. What post format are they using? (list, story, hot take, data, question)
+3. What's getting the most engagement (likes, comments, reposts)?
+4. What's their angle/positioning — how do they frame AI?
+5. Where is there a gap that Grey AI can fill with our voice?
+6. What specific post could we create inspired by this — but sharper, more analytical, more structured?
+
+### Drafting From Research
+
+When creating a post inspired by watchlist profiles:
+
+- Based on [username]'s recent post about [topic]:
+  - Their angle: [what they said]
+  - Our angle: [how Grey AI would reframe this — more analytical, timeline-driven, specific]
+  - Format: [Pattern Interrupt / Micro-Lesson / Relatable Rant / Case Study]
+  - Pillar: [which content pillar this maps to]

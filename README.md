@@ -78,8 +78,7 @@ This file is gitignored (each person has their own). Create it at `.claude/setti
       "mcp__linkedin-scraper__get_company_posts",
       "mcp__linkedin-scraper__get_company_profile",
       "mcp__linkedin-scraper__get_person_profile",
-      "mcp__linkedin-scraper__get_person_posts",
-      "WebFetch(domain:www.yoursparkpath.com)"
+      "mcp__linkedin-scraper__get_person_posts"
     ]
   },
   "enabledMcpjsonServers": ["linkedin-scraper"]
@@ -104,11 +103,10 @@ claude
 
 Claude follows the workflow defined in `CLAUDE.md`:
 
-1. **Research** — Pulls competitor posts via the LinkedIn scraper MCP
-2. **Analyze** — Identifies engagement patterns and content gaps
-3. **Draft** — Writes posts in Grey AI's voice across 6 content pillars
-4. **Save** — Saves drafts to `drafts/YYYY-MM-DD-[slug].md`
-5. **Format** — Each draft ends with a `---COPY BELOW---` block ready to paste into LinkedIn
+1. **Scrape** — Automatically iterates through all profiles in the watchlist, one at a time
+2. **Analyze** — Compiles all findings into one research file, identifies top content and trends
+3. **Draft** — Writes posts inspired by watchlist content, but in Grey AI's analytical voice
+4. **Save** — Saves drafts to `drafts/YYYY-MM-DD-[slug].md` with copy-paste blocks
 
 ---
 
@@ -120,7 +118,7 @@ Sessions expire periodically. When they do, run:
 uv run --project linkedin-mcp-local linkedin-mcp-server --login
 ```
 
-Claude will warn you when the session expires and fall back to web search automatically while you refresh it.
+Claude will ask you to refresh the session when it expires. It will retry once after you refresh. After two failed attempts, it will automatically fall back to web search.
 
 **Other session commands:**
 ```bash
@@ -143,6 +141,5 @@ grey-ai-linkedin/
 │   └── watchlist.md           # Competitor list with research prompts
 ├── drafts/                    # Generated post drafts (YYYY-MM-DD-slug.md)
 ├── research/                  # Competitor analyses and trend findings
-├── website/                   # Scraped Grey AI site content (pricing, products, etc.)
 └── linkedin-mcp-local/        # Custom LinkedIn scraper MCP server (Python)
 ```
